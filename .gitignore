@@ -1,0 +1,42 @@
+*.class
+*.log
+*.swp
+.#*
+*.iml
+.metals/
+*.pem
+*.der
+*.p12
+*.pkcs12
+*.jks
+yarn.lock
+.tags*
+.java-version
+package.json
+package-lock.json
+
+# metals
+.metals/
+project/metals.sbt
+.bloop/
+project/project/.bloop/
+
+# hydra
+.hydra/
+project/hydra.sbt
+
+# sbt specific
+.cache
+.history
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+sbt-ctags-dep-srcs/
+buildinfo.properties
+
+# OS X
+.DS_Store

@@ -1,0 +1,30 @@
+name: build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up JDK 14
+        uses: olafurpg/setup-scala@v2
+        with:
+          java-version: 14
+      - name: Cache Coursier
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/coursier
+          key: sbt-coursier-cache
+      - name: Cache SBT
+        uses: actions/cache@v1
+        with:
+          path: ~/.sbt
+          key: sbt-${{ hashFiles('**/build.sbt') }}
+      - name: Checking your code format
+        run: csbt scalafmtCheckAll
+      - name: Run test
+        run: csbt clean test
+      - name: Run test 0.6
+        run: SCALAJS_VERSION=0.6.32 csbt clean test
