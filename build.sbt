@@ -3,7 +3,7 @@ import sbtcrossproject.CrossPlugin.autoImport.crossProject
 val scalaJSVersion06 = Option(System.getenv("SCALAJS_VERSION")).exists(_.startsWith("0.6"))
 
 val mUnit      = "0.7.5"
-val discipline = if (scalaJSVersion06) "1.0.1" else "1.0.2"
+val discipline = Option("1.0.2").filterNot(_ => scalaJSVersion06).getOrElse("1.0.1")
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
@@ -32,7 +32,6 @@ lazy val root = project
   .in(file("."))
   .aggregate(coreJVM, coreJS)
   .settings(
-    name := "discipline-munit",
     publish := {},
     publishLocal := {}
   )
@@ -53,10 +52,14 @@ lazy val core = crossProject(JVMPlatform, JSPlatform)
         Some("scm:git:git@github.com:rpiaggio/discipline-munit.git")
       )
     ),
+    testFrameworks += new TestFramework("munit.Framework"),
     pomIncludeRepository := { _ => false }
   )
   .jvmSettings(
     skip.in(publish) := scalaJSVersion06
+  )
+  .jsSettings(
+    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
   )
 
 lazy val coreJVM = core.jvm
