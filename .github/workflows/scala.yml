@@ -25,6 +25,6 @@ jobs:
       - name: Checking your code format
         run: csbt scalafmtCheckAll
       - name: Run test
-        run: csbt clean test
+        run: csbt clean +test
       - name: Run test 0.6
-        run: SCALAJS_VERSION=0.6.32 csbt clean test
+        run: SCALAJS_VERSION=0.6.32 csbt clean +test
