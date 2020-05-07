@@ -1,11 +1,8 @@
-package org.typelevel.discipline
 package munit
 
-import _root_.munit.Location
-import _root_.munit.ScalaCheckSuite
-import _root_.munit.TestOptions
+import org.typelevel.discipline.Laws
 
-trait Discipline extends ScalaCheckSuite {
+trait DisciplineSuite extends ScalaCheckSuite {
 
   def checkAll(name: String, ruleSet: Laws#RuleSet)(implicit
     loc:             Location

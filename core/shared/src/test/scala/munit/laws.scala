@@ -1,4 +1,4 @@
-package org.typelevel.discipline.munit
+package munit
 
 import org.scalacheck.Prop
 import org.typelevel.discipline.Laws
