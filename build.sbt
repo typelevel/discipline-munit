@@ -10,10 +10,10 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 inThisBuild(
   List(
     name := "discipline-munit",
+    organization := "org.typelevel",
     scalaVersion := "2.13.2",
     crossScalaVersions := Seq("2.11.12", "2.12.10", scalaVersion.value),
-    organization := "com.rpiaggio",
-    homepage := Some(url("https://github.com/rpiaggio/discipline-munit")),
+    homepage := Some(url("https://github.com/typelevel/discipline-munit")),
     licenses += ("BSD 3-Clause", url(
       "http://opensource.org/licenses/BSD-3-Clause"
     )),
@@ -22,7 +22,7 @@ inThisBuild(
         "rpiaggio",
         "Raúl Piaggio",
         "rpiaggio@gmail.com",
-        url("http://rpiaggio.com")
+        url("http://github.com/rpiaggio")
       )
     )
   )
@@ -47,9 +47,9 @@ lazy val core = crossProject(JVMPlatform, JSPlatform)
     ),
     scmInfo := Some(
       ScmInfo(
-        url("https://https://github.com/rpiaggio/discipline-munit"),
-        "scm:git:git@github.com:rpiaggio/discipline-munit.git",
-        Some("scm:git:git@github.com:rpiaggio/discipline-munit.git")
+        url("https://github.com/typelevel/discipline-munit"),
+        "scm:git:git@github.com:typelevel/discipline-munit.git",
+        Some("scm:git:git@github.com:typelevel/discipline-munit.git")
       )
     ),
     testFrameworks += new TestFramework("munit.Framework"),
@@ -66,6 +66,6 @@ lazy val coreJVM = core.jvm
 
 lazy val coreJS = core.js
 
-sonatypeProfileName := "com.rpiaggio"
+sonatypeProfileName := "org.typelevel"
 
 packagedArtifacts in root := Map.empty
