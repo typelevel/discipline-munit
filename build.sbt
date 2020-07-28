@@ -3,7 +3,7 @@ import sbtcrossproject.CrossPlugin.autoImport.crossProject
 val scalaJSVersion06 = Option(System.getenv("SCALAJS_VERSION")).exists(_.startsWith("0.6"))
 
 val mUnit      = "0.7.10"
-val discipline = "1.0.2"
+val discipline = "1.0.3"
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
@@ -12,7 +12,7 @@ inThisBuild(
     name := "discipline-munit",
     organization := "org.typelevel",
     scalaVersion := "2.13.2",
-    crossScalaVersions := Seq("2.11.12", "2.12.11", scalaVersion.value),
+    crossScalaVersions := Seq("2.11.12", "2.12.11", scalaVersion.value, "0.26.0-RC1"),
     homepage := Some(url("https://github.com/typelevel/discipline-munit")),
     licenses += ("BSD 3-Clause", url(
       "http://opensource.org/licenses/BSD-3-Clause"
@@ -59,7 +59,8 @@ lazy val core = crossProject(JVMPlatform, JSPlatform)
     skip.in(publish) := scalaJSVersion06
   )
   .jsSettings(
-    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
+    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
+    crossScalaVersions := crossScalaVersions.value.init
   )
 
 lazy val coreJVM = core.jvm
