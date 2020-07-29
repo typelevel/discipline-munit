@@ -1,7 +1,5 @@
 import sbtcrossproject.CrossPlugin.autoImport.crossProject
 
-val scalaJSVersion06 = Option(System.getenv("SCALAJS_VERSION")).exists(_.startsWith("0.6"))
-
 val mUnit      = "0.7.10"
 val discipline = "1.0.3"
 
@@ -54,9 +52,6 @@ lazy val core = crossProject(JVMPlatform, JSPlatform)
     ),
     testFrameworks += new TestFramework("munit.Framework"),
     pomIncludeRepository := { _ => false }
-  )
-  .jvmSettings(
-    skip.in(publish) := scalaJSVersion06
   )
   .jsSettings(
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
