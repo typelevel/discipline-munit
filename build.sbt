@@ -57,6 +57,15 @@ lazy val core = crossProject(JVMPlatform, JSPlatform)
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
     crossScalaVersions := crossScalaVersions.value.init
   )
+  .jvmSettings(
+    Compile / doc / sources := {
+      val old = (Compile / doc / sources).value
+      if (isDotty.value)
+        Seq()
+      else
+        old
+    }
+  )
 
 lazy val coreJVM = core.jvm
 
