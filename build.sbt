@@ -3,7 +3,7 @@ import sbtcrossproject.CrossPlugin.autoImport.crossProject
 val scalaJSVersion06 = Option(System.getenv("SCALAJS_VERSION")).exists(_.startsWith("0.6"))
 
 val mUnit      = "0.7.10"
-val discipline = "1.0.2"
+val discipline = "1.0.3"
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
