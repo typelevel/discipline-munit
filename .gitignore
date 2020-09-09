@@ -3,7 +3,6 @@
 *.swp
 .#*
 *.iml
-.metals/
 *.pem
 *.der
 *.p12
@@ -15,11 +14,11 @@ yarn.lock
 package.json
 package-lock.json
 
-# metals
+# ide
+.vscode/
 .metals/
-project/metals.sbt
 .bloop/
-project/project/.bloop/
+metals.sbt
 
 # hydra
 .hydra/

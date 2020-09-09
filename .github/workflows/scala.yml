@@ -7,22 +7,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
-      - name: Set up JDK 14
-        uses: olafurpg/setup-scala@v2
+      - uses: actions/checkout@v2
+      - uses: coursier/cache-action@v3
+      - name: Set up JDK
+        uses: olafurpg/setup-scala@v7
         with:
-          java-version: 14
-      - name: Cache Coursier
+          java-version: adoptjdk@14
+      - name: Cache SBT ivy cache
         uses: actions/cache@v1
         with:
-          path: ~/.cache/coursier
-          key: sbt-coursier-cache
+          path: ~/.ivy2/cache
+          key: ${{ runner.os }}-sbt-ivy-cache-${{ hashFiles('**/project/**') }}-${{ hashFiles('**/build.sbt') }}
       - name: Cache SBT
         uses: actions/cache@v1
         with:
           path: ~/.sbt
-          key: sbt-${{ hashFiles('**/build.sbt') }}
-      - name: Checking your code format
-        run: csbt scalafmtCheckAll
-      - name: Run test
-        run: csbt clean +test
+          key: ${{ runner.os }}-sbt-${{ hashFiles('**/project/**') }}-${{ hashFiles('**/build.sbt') }}          
+      - name: Run compile
+        run: csbt scalafmtCheckAll +compile +test
