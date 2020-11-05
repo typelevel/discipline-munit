@@ -1,7 +1,7 @@
 import sbtcrossproject.CrossPlugin.autoImport.crossProject
 
 val mUnit      = "0.7.16"
-val discipline = "1.1.0"
+val discipline = "1.1.1"
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
