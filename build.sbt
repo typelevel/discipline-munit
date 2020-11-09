@@ -1,7 +1,7 @@
 import sbtcrossproject.CrossPlugin.autoImport.crossProject
 
-val mUnit      = "0.7.16"
-val discipline = "1.1.1"
+val mUnit      = "0.7.17"
+val discipline = "1.1.2"
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
@@ -55,7 +55,7 @@ lazy val core = crossProject(JVMPlatform, JSPlatform)
   )
   .jsSettings(
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
-    crossScalaVersions := crossScalaVersions.value.filter(_.startsWith("2."))
+    crossScalaVersions := crossScalaVersions.value.filterNot(_.startsWith("0."))
   )
   .jvmSettings(
     Compile / doc / sources := {
