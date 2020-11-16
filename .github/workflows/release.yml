@@ -8,7 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: olafurpg/setup-scala@v10
+      - name: Set up JDK
+        uses: olafurpg/setup-scala@v10
+        with:
+          java-version: adoptjdk@1.14
       - uses: olafurpg/setup-gpg@v2
       - name: Publish
         run: |
