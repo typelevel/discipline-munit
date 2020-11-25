@@ -36,6 +36,7 @@ project/boot/
 project/plugins/project/
 sbt-ctags-dep-srcs/
 buildinfo.properties
+/.bsp/
 
 # OS X
 .DS_Store
