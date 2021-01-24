@@ -34,7 +34,7 @@ lazy val root = project
     publishLocal := {}
   )
 
-lazy val core = crossProject(JVMPlatform, JSPlatform)
+lazy val core = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   .in(file("core"))
   .settings(
     moduleName := "discipline-munit",
@@ -68,6 +68,8 @@ lazy val core = crossProject(JVMPlatform, JSPlatform)
 lazy val coreJVM = core.jvm
 
 lazy val coreJS = core.js
+
+lazy val coreNative = core.native
 
 sonatypeProfileName := "org.typelevel"
 
