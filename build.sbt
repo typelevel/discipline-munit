@@ -9,8 +9,8 @@ inThisBuild(
   List(
     name := "discipline-munit",
     organization := "org.typelevel",
-    scalaVersion := "2.13.3",
-    crossScalaVersions := Seq("2.11.12", "2.12.12", scalaVersion.value, "3.0.0-M2", "3.0.0-M3"),
+    scalaVersion := "2.13.4",
+    crossScalaVersions := Seq("2.11.12", "2.12.13", scalaVersion.value, "3.0.0-M2", "3.0.0-M3"),
     homepage := Some(url("https://github.com/typelevel/discipline-munit")),
     licenses += ("BSD 3-Clause", url(
       "http://opensource.org/licenses/BSD-3-Clause"
@@ -28,13 +28,13 @@ inThisBuild(
 
 lazy val root = project
   .in(file("."))
-  .aggregate(coreJVM, coreJS)
+  .aggregate(coreJVM, coreJS, coreNative)
   .settings(
     publish := {},
     publishLocal := {}
   )
 
-lazy val core = crossProject(JVMPlatform, JSPlatform)
+lazy val core = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   .in(file("core"))
   .settings(
     moduleName := "discipline-munit",
@@ -64,10 +64,15 @@ lazy val core = crossProject(JVMPlatform, JSPlatform)
         old
     }
   )
+  .nativeSettings(
+    crossScalaVersions := crossScalaVersions.value.filter(_.startsWith("2."))
+  )
 
 lazy val coreJVM = core.jvm
 
 lazy val coreJS = core.js
+
+lazy val coreNative = core.native
 
 sonatypeProfileName := "org.typelevel"
 
