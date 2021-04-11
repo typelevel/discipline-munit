@@ -54,15 +54,7 @@ lazy val core = crossProject(JVMPlatform, JSPlatform, NativePlatform)
     pomIncludeRepository := { _ => false }
   )
   .jsSettings(
-    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) })
-  .jvmSettings(
-    Compile / doc / sources := {
-      val old = (Compile / doc / sources).value
-      if (isDotty.value)
-        Seq()
-      else
-        old
-    }
+    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
   )
   .nativeSettings(
     crossScalaVersions := crossScalaVersions.value.filter(_.startsWith("2."))
@@ -76,4 +68,4 @@ lazy val coreNative = core.native
 
 sonatypeProfileName := "org.typelevel"
 
-packagedArtifacts in root := Map.empty
+root / packagedArtifacts := Map.empty
