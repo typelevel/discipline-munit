@@ -4,11 +4,11 @@
 
 ## Quick Start
 
-To use discipline-munit in an existing SBT project with Scala 2.11 or a later version, add the following dependencies to your
+To use discipline-munit in an existing SBT project with Scala 2.12 or a later version, add the following dependencies to your
 `build.sbt` depending on your needs:
 
 ```scala
 libraryDependencies ++= Seq(
-  "org.typelevel" %% "discipline-munit" % "<version>"
+  "org.typelevel" %%% "discipline-munit" % "<version>" % Test
 )
 ```
