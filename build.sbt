@@ -7,15 +7,15 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 
 inThisBuild(
   List(
-    name := "discipline-munit",
-    organization := "org.typelevel",
-    scalaVersion := "2.13.6",
+    name               := "discipline-munit",
+    organization       := "org.typelevel",
+    scalaVersion       := "2.13.6",
     crossScalaVersions := Seq("2.12.14", "2.13.6", "3.0.1"),
-    homepage := Some(url("https://github.com/typelevel/discipline-munit")),
+    homepage           := Some(url("https://github.com/typelevel/discipline-munit")),
     licenses += ("BSD 3-Clause", url(
       "http://opensource.org/licenses/BSD-3-Clause"
     )),
-    developers := List(
+    developers         := List(
       Developer(
         "rpiaggio",
         "Raúl Piaggio",
@@ -30,20 +30,20 @@ lazy val root = project
   .in(file("."))
   .aggregate(coreJVM, coreJS, coreNative)
   .settings(
-    publish := {},
+    publish      := {},
     publishLocal := {}
   )
 
 lazy val core = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   .in(file("core"))
   .settings(
-    moduleName := "discipline-munit",
+    moduleName           := "discipline-munit",
     libraryDependencies ++= Seq(
       "org.scalameta" %%% "munit"            % mUnit,
       "org.scalameta" %%% "munit-scalacheck" % mUnit,
       "org.typelevel" %%% "discipline-core"  % discipline
     ),
-    scmInfo := Some(
+    scmInfo              := Some(
       ScmInfo(
         url("https://github.com/typelevel/discipline-munit"),
         "scm:git:git@github.com:typelevel/discipline-munit.git",
