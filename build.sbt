@@ -26,7 +26,7 @@ inThisBuild(
   )
 )
 
-lazy val root = project
+lazy val root    = project
   .in(file("."))
   .aggregate(coreJVM, coreJS, coreNative)
   .settings(
@@ -34,7 +34,7 @@ lazy val root = project
     publishLocal := {}
   )
 
-lazy val core = crossProject(JVMPlatform, JSPlatform, NativePlatform)
+lazy val core    = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   .in(file("core"))
   .settings(
     moduleName           := "discipline-munit",
