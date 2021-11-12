@@ -10,7 +10,7 @@ inThisBuild(
     name               := "discipline-munit",
     organization       := "org.typelevel",
     scalaVersion       := "2.13.6",
-    crossScalaVersions := Seq("2.12.14", "2.13.6", "3.0.1"),
+    crossScalaVersions := Seq("2.12.15", "2.13.6", "3.0.1"),
     homepage           := Some(url("https://github.com/typelevel/discipline-munit")),
     licenses += ("BSD 3-Clause", url(
       "http://opensource.org/licenses/BSD-3-Clause"
