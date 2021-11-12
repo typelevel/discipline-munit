@@ -1,6 +1,6 @@
 import sbtcrossproject.CrossPlugin.autoImport.crossProject
 
-val mUnit      = "0.7.28"
+val mUnit      = "0.7.29"
 val discipline = "1.1.5"
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
@@ -9,8 +9,8 @@ inThisBuild(
   List(
     name               := "discipline-munit",
     organization       := "org.typelevel",
-    scalaVersion       := "2.13.7",
-    crossScalaVersions := Seq("2.12.14", "2.13.7", "3.0.1"),
+    scalaVersion       := "2.13.6",
+    crossScalaVersions := Seq("2.12.15", "2.13.6", "3.0.1"),
     homepage           := Some(url("https://github.com/typelevel/discipline-munit")),
     licenses += ("BSD 3-Clause", url(
       "http://opensource.org/licenses/BSD-3-Clause"
