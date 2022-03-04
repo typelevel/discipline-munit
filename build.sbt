@@ -1,5 +1,3 @@
-import sbtcrossproject.CrossPlugin.autoImport.crossProject
-
 val mUnit      = "0.7.29"
 val discipline = "1.1.5"
 
@@ -7,15 +5,15 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 
 inThisBuild(
   List(
-    name               := "discipline-munit",
-    organization       := "org.typelevel",
-    scalaVersion       := "2.13.6",
-    crossScalaVersions := Seq("2.12.15", "2.13.6", "3.0.2"),
-    homepage           := Some(url("https://github.com/typelevel/discipline-munit")),
-    licenses += ("BSD 3-Clause", url(
-      "http://opensource.org/licenses/BSD-3-Clause"
-    )),
-    developers         := List(
+    tlBaseVersion       := "1.0",
+    scalaVersion        := "2.13.6",
+    crossScalaVersions  := Seq("2.12.15", "2.13.6", "3.0.2"),
+    tlVersionIntroduced := Map("3" -> "1.0.9"),
+    licenses            := List(
+      "BSD-3-Clause" -> url("http://opensource.org/licenses/BSD-3-Clause")
+    ),
+    startYear           := Some(2020),
+    developers          := List(
       Developer(
         "rpiaggio",
         "Raúl Piaggio",
@@ -26,45 +24,19 @@ inThisBuild(
   )
 )
 
-lazy val root = project
-  .in(file("."))
-  .aggregate(coreJVM, coreJS, coreNative)
-  .settings(
-    publish      := {},
-    publishLocal := {}
-  )
+lazy val root = tlCrossRootProject.aggregate(core)
 
 lazy val core = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   .in(file("core"))
   .settings(
-    moduleName           := "discipline-munit",
+    name := "discipline-munit",
     libraryDependencies ++= Seq(
       "org.scalameta" %%% "munit"            % mUnit,
       "org.scalameta" %%% "munit-scalacheck" % mUnit,
       "org.typelevel" %%% "discipline-core"  % discipline
-    ),
-    scmInfo              := Some(
-      ScmInfo(
-        url("https://github.com/typelevel/discipline-munit"),
-        "scm:git:git@github.com:typelevel/discipline-munit.git",
-        Some("scm:git:git@github.com:typelevel/discipline-munit.git")
-      )
-    ),
-    pomIncludeRepository := { _ => false }
-  )
-  .jsSettings(
-    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
+    )
   )
   .nativeSettings(
-    crossScalaVersions := crossScalaVersions.value.filter(_.startsWith("2."))
+    tlVersionIntroduced ++= List("2.12", "2.13").map(_ -> "1.0.5").toMap,
+    crossScalaVersions := (ThisBuild / crossScalaVersions).value.filter(_.startsWith("2."))
   )
-
-lazy val coreJVM = core.jvm
-
-lazy val coreJS = core.js
-
-lazy val coreNative = core.native
-
-sonatypeProfileName := "org.typelevel"
-
-root / packagedArtifacts := Map.empty
