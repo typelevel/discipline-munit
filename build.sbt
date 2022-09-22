@@ -6,8 +6,8 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 inThisBuild(
   List(
     tlBaseVersion      := "2.0",
-    scalaVersion       := "2.13.8",
-    crossScalaVersions := Seq("2.12.17", "2.13.8", "3.1.3"),
+    scalaVersion       := "2.13.9",
+    crossScalaVersions := Seq("2.12.17", "2.13.9", "3.1.3"),
     licenses           := List(
       "BSD-3-Clause" -> url("http://opensource.org/licenses/BSD-3-Clause")
     ),
