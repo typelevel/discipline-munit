@@ -7,7 +7,7 @@ inThisBuild(
   List(
     tlBaseVersion      := "2.0",
     scalaVersion       := "2.13.10",
-    crossScalaVersions := Seq("2.12.17", "2.13.10", "3.2.1"),
+    crossScalaVersions := Seq("2.12.17", "2.13.10", "3.2.2"),
     licenses           := List(
       "BSD-3-Clause" -> url("http://opensource.org/licenses/BSD-3-Clause")
     ),
