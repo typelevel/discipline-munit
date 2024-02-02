@@ -1,4 +1,4 @@
-val mUnit      = "1.0.0-M7"
+val mUnit      = "1.0.0-M11"
 val discipline = "1.5.1"
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
