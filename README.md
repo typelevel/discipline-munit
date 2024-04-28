@@ -1,6 +1,6 @@
 # discipline-munit - MUnit binding for Typelevel Discipline
 
-![Build Status](https://github.com/typelevel/discipline-munit/workflows/build/badge.svg) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.typelevel/discipline-munit_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.typelevel/discipline-munit_2.12)
+![Build Status](https://github.com/typelevel/discipline-munit/actions/workflows/ci.yml/badge.svg) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.typelevel/discipline-munit_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.typelevel/discipline-munit_2.12)
 
 ## Quick Start
 
