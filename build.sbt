@@ -1,5 +1,6 @@
-val mUnit      = "1.0.2"
-val discipline = "1.7.0"
+val mUnit           = "1.0.2"
+val mUnitScalacheck = "1.0.0"
+val discipline      = "1.7.0"
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
@@ -31,7 +32,7 @@ lazy val core = crossProject(JVMPlatform, JSPlatform, NativePlatform)
     name := "discipline-munit",
     libraryDependencies ++= Seq(
       "org.scalameta" %%% "munit"            % mUnit,
-      "org.scalameta" %%% "munit-scalacheck" % mUnit,
+      "org.scalameta" %%% "munit-scalacheck" % mUnitScalacheck,
       "org.typelevel" %%% "discipline-core"  % discipline
     )
   )
