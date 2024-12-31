@@ -1,13 +1,18 @@
-val mUnit      = "1.0.0"
-val discipline = "1.7.0"
+val scala212 = "2.12.20"
+val scala213 = "2.13.15"
+val scala3   = "3.3.4"
+
+val mUnit           = "1.0.0"
+val mUnitScalaCheck = "1.0.0"
+val discipline      = "1.7.0"
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
 inThisBuild(
   List(
     tlBaseVersion      := "2.0",
-    scalaVersion       := "2.13.15",
-    crossScalaVersions := Seq("2.12.20", "2.13.15", "3.3.4"),
+    scalaVersion       := scala213,
+    crossScalaVersions := Seq(scala212, scala213, scala3),
     licenses           := List(
       "BSD-3-Clause" -> url("http://opensource.org/licenses/BSD-3-Clause")
     ),
@@ -31,7 +36,7 @@ lazy val core = crossProject(JVMPlatform, JSPlatform, NativePlatform)
     name := "discipline-munit",
     libraryDependencies ++= Seq(
       "org.scalameta" %%% "munit"            % mUnit,
-      "org.scalameta" %%% "munit-scalacheck" % mUnit,
+      "org.scalameta" %%% "munit-scalacheck" % mUnitScalaCheck,
       "org.typelevel" %%% "discipline-core"  % discipline
     )
   )
