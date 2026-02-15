@@ -3,7 +3,7 @@ val scala213 = "2.13.18"
 val scala3   = "3.3.7"
 
 val mUnit           = "1.0.0"
-val mUnitScalaCheck = "1.0.0"
+val mUnitScalaCheck = "1.2.0"
 val discipline      = "1.7.0"
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
