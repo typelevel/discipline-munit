@@ -1,6 +1,6 @@
 val scala212 = "2.12.21"
 val scala213 = "2.13.18"
-val scala3   = "3.3.8"
+val scala3   = "3.9.0"
 
 val mUnit           = "1.0.0"
 val mUnitScalaCheck = "1.3.1"
